@@ -3,8 +3,8 @@
 <%= render @issue %>
 
 <div>
-  <%= link_to "Edit this issue", edit_issue_path(@issue) %> |
-  <%= link_to "Back to issues", issues_path %>
+  <%= link_to '修改問題', edit_issue_path(@issue) %> |
+  <%= link_to '回到問題列表', issues_path %>
 
-  <%= button_to "Destroy this issue", @issue, method: :delete %>
+  <%= button_to '刪除', @issue, method: :delete %>
 </div>

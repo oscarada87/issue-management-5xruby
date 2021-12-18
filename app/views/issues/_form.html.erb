@@ -23,12 +23,12 @@
 
   <div>
     <%= form.label :priority, style: "display: block" %>
-    <%= form.text_field :priority %>
+    <%= form.select :priority, Issue.human_enum_collection(:priorities) %>
   </div>
 
   <div>
     <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
+    <%= form.select :status, Issue.human_enum_collection(:statuses) %>
   </div>
 
   <div>

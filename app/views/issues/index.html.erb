@@ -1,14 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Issues</h1>
+<h1>問題列表</h1>
 
 <div id="issues">
   <% @issues.each do |issue| %>
     <%= render issue %>
     <p>
-      <%= link_to "Show this issue", issue %>
+      <%= link_to '顯示問題', issue %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New issue", new_issue_path %>
+<%= link_to '新問題', new_issue_path %>
