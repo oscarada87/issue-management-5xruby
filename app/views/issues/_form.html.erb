@@ -11,37 +11,37 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control", placeholder: '請輸入標題' %>
   </div>
 
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_field :content %>
+  <div class="mb-3">
+    <%= form.label :content, class: "form-label" %>
+    <%= form.text_field :content, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :priority, style: "display: block" %>
-    <%= form.select :priority, Issue.human_enum_collection(:priorities) %>
+  <div class="mb-3">
+    <%= form.label :priority, class: "form-label" %>
+    <%= form.select :priority, Issue.human_enum_collection(:priorities), {}, { class: "form-select" } %>
   </div>
 
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.select :status, Issue.human_enum_collection(:statuses) %>
+  <div class="mb-3">
+    <%= form.label :status, class: "form-label" %>
+    <%= form.select :status, Issue.human_enum_collection(:statuses), {}, { class: "form-select" } %>
   </div>
 
-  <div>
-    <%= form.label :started_at, style: "display: block" %>
-    <%= form.date_field :started_at %>
+  <div class="mb-3">
+    <%= form.label :started_at, class: "form-label" %>
+    <%= form.date_field :started_at, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :finished_at, style: "display: block" %>
-    <%= form.date_field :finished_at %>
+  <div class="mb-3">
+    <%= form.label :finished_at, class: "form-label" %>
+    <%= form.date_field :finished_at, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -19,31 +19,22 @@ class IssuesController < ApplicationController
   def edit
   end
 
-  # POST /issues or /issues.json
   def create
     @issue = Issue.new(issue_params)
 
-    respond_to do |format|
-      if @issue.save
-        format.html { redirect_to issue_url(@issue), notice: '問題成功建立！' }
-        format.json { render :show, status: :created, location: @issue }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @issue.errors, status: :unprocessable_entity }
-      end
+    if @issue.save
+      format.html { redirect_to issues_url, success: '問題成功建立！' }
+    else
+      format.html { render :new, status: :unprocessable_entity }
     end
   end
 
   # PATCH/PUT /issues/1 or /issues/1.json
   def update
-    respond_to do |format|
-      if @issue.update(issue_params)
-        format.html { redirect_to issue_url(@issue), notice: '問題成功更新！' }
-        format.json { render :show, status: :ok, location: @issue }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @issue.errors, status: :unprocessable_entity }
-      end
+    if @issue.update(issue_params)
+      format.html { redirect_to issue_url(@issue), notice: '問題成功更新！' }
+    else
+      format.html { render :edit, status: :unprocessable_entity }
     end
   end
 

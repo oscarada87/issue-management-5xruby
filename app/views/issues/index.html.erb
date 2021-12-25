@@ -1,14 +1,33 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>問題列表</h1>
-
-<div id="issues">
-  <% @issues.each do |issue| %>
-    <%= render issue %>
-    <p>
-      <%= link_to '顯示問題', issue %>
-    </p>
-  <% end %>
+<div id="issues" class="container">
+  <h1>問題列表</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"><%= Issue.human_attribute_name(:title) %></th>
+        <th scope="col"><%= Issue.human_attribute_name(:content) %></th>
+        <th scope="col"><%= Issue.human_attribute_name(:priority) %></th>
+        <th scope="col"><%= Issue.human_attribute_name(:status) %></th>
+        <th scope="col"><%= Issue.human_attribute_name(:started_at) %></th>
+        <th scope="col"><%= Issue.human_attribute_name(:finished_at) %></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @issues.each do |issue| %>
+        <tr>
+          <td><%= issue.id %></td>
+          <td><%= issue.title %></td>
+          <td><%= issue.content %></td>
+          <td><%= Issue.human_enum_name(:priority, issue.priority) %></td>
+          <td><%= Issue.human_enum_name(:status, issue.status) %></td>
+          <td><%= issue.started_at %></td>
+          <td><%= issue.finished_at %></td>
+          <td><%= button_to '編輯', edit_issue_path(issue), method: :get, class: "btn btn-primary btn-sm" %></td>
+          <td><%= button_to '刪除', issue_path(issue), method: :delete, class: "btn btn-danger btn-sm" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= button_to '新問題', new_issue_path, method: :get, class: "btn btn-secondary" %>
 </div>
-
-<%= link_to '新問題', new_issue_path %>
