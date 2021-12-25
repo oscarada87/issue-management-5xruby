@@ -6,9 +6,6 @@ class IssuesController < ApplicationController
     @issues = Issue.all
   end
 
-  # GET /issues/1 or /issues/1.json
-  def show
-  end
 
   # GET /issues/new
   def new
@@ -23,18 +20,18 @@ class IssuesController < ApplicationController
     @issue = Issue.new(issue_params)
 
     if @issue.save
-      format.html { redirect_to issues_url, success: '問題成功建立！' }
+      redirect_to issues_url, success: '問題成功建立！'
     else
-      format.html { render :new, status: :unprocessable_entity }
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /issues/1 or /issues/1.json
   def update
     if @issue.update(issue_params)
-      format.html { redirect_to issue_url(@issue), notice: '問題成功更新！' }
+      redirect_to issues_url, notice: '問題成功更新！'
     else
-      format.html { render :edit, status: :unprocessable_entity }
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -42,10 +39,7 @@ class IssuesController < ApplicationController
   def destroy
     @issue.destroy
 
-    respond_to do |format|
-      format.html { redirect_to issues_url, notice: '問題已刪除！' }
-      format.json { head :no_content }
-    end
+    redirect_to issues_url, notice: '問題已刪除！'
   end
 
   private
