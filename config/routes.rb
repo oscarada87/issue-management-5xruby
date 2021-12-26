@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   resources :issues
-  resources :users
+  resources :users do
+    get 'sign_in', on: :collection
+    post 'sign_in', to: 'users#login', on: :collection
+    delete 'sign_out'
+  end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
   get 'welcome/index'
   root to: 'welcome#index'
 end

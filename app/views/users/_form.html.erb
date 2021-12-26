@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :account, style: "display: block" %>
-    <%= form.text_field :account %>
+  <div class="mb-3">
+    <%= form.label :account, class: "form-label" %>
+    <%= form.text_field :account, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :encrypted_password, style: "display: block" %>
-    <%= form.text_field :encrypted_password %>
+  <div class="mb-3">
+    <%= form.label :password, class: "form-label" %>
+    <%= form.text_field :password, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

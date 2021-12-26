@@ -6,6 +6,7 @@ zh-TW:
     attributes:
       user:
         account: 帳號
+        password: 密碼
         name: 暱稱
       issue:
         title: 標題
