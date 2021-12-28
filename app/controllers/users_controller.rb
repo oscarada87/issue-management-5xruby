@@ -44,10 +44,10 @@ class UsersController < ApplicationController
 
   def sign_out
     session.delete(:user_id)
+    redirect_to root_url
   end
 
   def login
-    binding.break
     user = User.find_by(account: user_params[:account])
     if user.present? && user.authenticate(user_params[:password])
       session[:user_id] = user.id
