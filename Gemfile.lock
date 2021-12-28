@@ -1,12 +1,3 @@
-GIT
-  remote: https://github.com/oscarada87/rails-i18n.git
-  revision: 75b7268c1529010fce5d0dde817b5dc1e3022cc0
-  branch: master
-  specs:
-    rails-i18n (7.0.0)
-      i18n (>= 0.7, < 2)
-      railties (>= 6.0.0, < 8)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -160,6 +151,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
+    rails-i18n (7.0.1)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (7.0.0)
       actionpack (= 7.0.0)
       activesupport (= 7.0.0)
@@ -242,7 +236,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.5.1)
+    zeitwerk (2.5.2)
 
 PLATFORMS
   x86_64-darwin-21
@@ -261,7 +255,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0)
-  rails-i18n!
+  rails-i18n
   redis (~> 4.0)
   rspec-rails (~> 5.0.0)
   rubocop

@@ -51,7 +51,7 @@ gem 'cssbundling-rails'
 # gem "image_processing", "~> 1.2"
 
 # localize i18n
-gem 'rails-i18n', github: 'oscarada87/rails-i18n', branch: 'master'
+gem 'rails-i18n'
 
 # load env file
 gem "dotenv-rails"
