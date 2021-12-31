@@ -53,6 +53,9 @@ gem 'cssbundling-rails'
 # localize i18n
 gem 'rails-i18n'
 
+# search
+gem 'ransack'
+
 # load env file
 gem "dotenv-rails"
 

@@ -3,13 +3,14 @@ class IssuesController < ApplicationController
 
   # GET /issues or /issues.json
   def index
-    @issues = Issue.all
+    @q = Issue.where(user: current_user).ransack(params[:q])
+    @issues = @q.result
   end
 
 
   # GET /issues/new
   def new
-    @issue = Issue.new
+    @issue = Issue.new(user: current_user)
   end
 
   # GET /issues/1/edit
@@ -50,6 +51,6 @@ class IssuesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def issue_params
-      params.require(:issue).permit(:title, :content, :priority, :status, :started_at, :finished_at)
+      params.require(:issue).permit(:title, :content, :priority, :status, :started_at, :finished_at, :user_id)
     end
 end

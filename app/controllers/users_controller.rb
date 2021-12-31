@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      session[:user_id] = user.id
+      session[:user_id] = @user.id
       redirect_to issues_url, notice: '建立帳號成功！'
     else
       render :new, status: :unprocessable_entity
@@ -40,6 +40,9 @@ class UsersController < ApplicationController
   # end
   #
   def sign_in
+    if current_user.present?
+      redirect_to issues_url
+    end
   end
 
   def sign_out
