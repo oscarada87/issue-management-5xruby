@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>IssueManagement5xruby</title>
+    <title>問題管理系統</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/nav_bar" %>
+    <% flash.each do |type, msg| %>
+      <div class="<%= flash_class(type) %>">
+        <%= msg %>
+      </div>
+    <% end %>
+    <div class="container mt-3">
+      <%= yield %>
+    </div>
   </body>
 </html>

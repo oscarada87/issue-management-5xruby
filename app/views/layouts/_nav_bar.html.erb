@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <%= link_to '首頁', root_path, class: 'navbar-brand' %>
+    <% if logged_in? %>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <%= link_to '問題', issues_path, class: 'nav-link' %>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button class="mx-1 navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <%= button_to '登出', user_sign_out_path(current_user), class: 'mx-1 btn btn-outline-primary', method: :delete %>
+      </div>
+    <% else %>
+      <div class="d-flex justify-content-end">
+        <%= button_to '註冊', new_user_path, method: :get, class: "mx-1 nav-link btn btn-outline-primary" %>
+        <%= button_to '登入', sign_in_users_path, class: 'mx-1 nav-link btn btn-outline-primary', method: :get %>
+      </div>
+    <% end %>
+  </div>
+</nav>

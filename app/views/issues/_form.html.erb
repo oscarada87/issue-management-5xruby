@@ -1,0 +1,47 @@
+<%= form_with(model: issue) do |form| %>
+  <% if issue.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
+
+      <ul>
+        <% issue.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.hidden_field :user_id %>
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control", placeholder: '請輸入標題' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :content, class: "form-label" %>
+    <%= form.text_field :content, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :priority, class: "form-label" %>
+    <%= form.select :priority, Issue.human_enum_collection(:priorities), {}, { class: "form-select" } %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :status, class: "form-label" %>
+    <%= form.select :status, Issue.human_enum_collection(:statuses), {}, { class: "form-select" } %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :started_at, class: "form-label" %>
+    <%= form.date_field :started_at, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :finished_at, class: "form-label" %>
+    <%= form.date_field :finished_at, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
