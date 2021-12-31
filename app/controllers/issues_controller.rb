@@ -4,7 +4,7 @@ class IssuesController < ApplicationController
   # GET /issues or /issues.json
   def index
     @q = Issue.where(user: current_user).ransack(params[:q])
-    @issues = @q.result
+    @issues = @q.result.page(params[:page])
   end
 
 

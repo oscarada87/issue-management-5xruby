@@ -56,6 +56,9 @@ gem 'rails-i18n'
 # search
 gem 'ransack'
 
+# pagination
+gem 'kaminari'
+
 # load env file
 gem "dotenv-rails"
 

@@ -51,5 +51,6 @@
       <% end %>
     </tbody>
   </table>
+  <%= paginate @issues %>
   <%= button_to '新問題', new_issue_path, method: :get, class: "btn btn-secondary" %>
 </div>
