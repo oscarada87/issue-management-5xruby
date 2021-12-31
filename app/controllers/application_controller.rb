@@ -14,4 +14,9 @@ class ApplicationController < ActionController::Base
   def authorized
     redirect_to root_url unless logged_in?
   end
+
+  # 404 page
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
 end
