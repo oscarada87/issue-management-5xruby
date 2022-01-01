@@ -1,19 +1,15 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: %i[ show edit update destroy ]
 
-  # GET /tags or /tags.json
   def index
     @q = Tag.where(user: current_user).ransack(params[:q])
     @tags = @q.result.page(params[:page])
   end
 
-
-  # GET /tags/new
   def new
     @tag = Tag.new(user: current_user)
   end
 
-  # GET /tags/1/edit
   def edit
   end
 
@@ -42,12 +38,10 @@ class TagsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_tag
       @tag = Tag.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def tag_params
       params.require(:tag).permit(:title, :user_id)
     end
