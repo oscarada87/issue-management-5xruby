@@ -12,7 +12,7 @@ on:
     branches: [ master ]
 
 jobs:
-  rspec-unit:
-    uses: oscar/issue-management-5xruby/.github/workflows/unit_test.yml@master
+  rspec:
+    uses: oscar/issue-management-5xruby/.github/workflows/rspec.yml@master
     secrets:
       ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
