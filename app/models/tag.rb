@@ -11,4 +11,8 @@
 
 class Tag < ApplicationRecord
   belongs_to :user
+  has_many :issue_tag_join_tables
+  has_many :issues, through: :issue_tag_join_tables
+
+  scope :by_user, -> (user_id) { where(user_id: user_id) }
 end

@@ -19,6 +19,9 @@ class Issue < ApplicationRecord
   enum priority: { low: 'low', medium: 'medium', high: 'high' }
   enum status: { pending: 'pending', on_going: 'on_going', done: 'done' }
   belongs_to :user
+  has_many :issue_tag_join_tables
+  has_many :tags, through: :issue_tag_join_tables
+
   scope :sort_by_priority_name_asc, -> {
     order_by = ['CASE']
     PRIORITY_ORDERS.each_with_index do |priority, index|
@@ -35,6 +38,12 @@ class Issue < ApplicationRecord
     order_by << 'END'
     order(Arel.sql(order_by.join(' ')))
   }
+
+  def tag_list=(names)
+    self.tags = names.split(',').map do |item|
+      Tag.where(title: item.strip, user_id: user_id).first_or_create!
+    end
+  end
 
   class << self
     def ransortable_attributes(auth_object = nil)
