@@ -15,4 +15,5 @@ class User < ApplicationRecord
   validates :password, presence: true
   has_secure_password :password
   has_many :issues, dependent: :destroy
+  has_many :tags, dependent: :destroy
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :issues
+  resources :tags
   resources :users do
     get 'sign_in', on: :collection
     post 'sign_in', to: 'users#login', on: :collection
