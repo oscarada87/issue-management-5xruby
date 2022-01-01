@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_31_034951) do
+ActiveRecord::Schema.define(version: 2022_01_01_063211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "issue_tag_join_tables", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "issue_id", null: false
+    t.index ["issue_id"], name: "index_issue_tag_join_tables_on_issue_id"
+    t.index ["tag_id"], name: "index_issue_tag_join_tables_on_tag_id"
+  end
 
   create_table "issues", force: :cascade do |t|
     t.string "title"
@@ -26,6 +33,14 @@ ActiveRecord::Schema.define(version: 2021_12_31_034951) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_issues_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

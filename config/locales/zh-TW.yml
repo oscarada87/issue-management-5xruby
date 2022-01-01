@@ -3,6 +3,7 @@ zh-TW:
     models:
       user: 使用者
       issue: 問題
+      tag: 標籤
     attributes:
       user:
         account: 帳號
@@ -23,6 +24,8 @@ zh-TW:
           done: 完成
         started_at: 開始日
         finished_at: 結束日
+      tag:
+        title: 名稱
   views:
     pagination:
       first: "&laquo; 第一頁"

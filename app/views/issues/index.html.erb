@@ -32,6 +32,8 @@
         <th scope="col">
           <%= sort_link(@q, :finished_at, Issue.human_attribute_name(:finished_at), default_order: :desc) %>
         </th>
+        <th scope="col">標籤</th>
+        <th scope="col"></th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -45,6 +47,7 @@
           <td><%= Issue.human_enum_name(:status, issue.status) %></td>
           <td><%= issue.started_at %></td>
           <td><%= issue.finished_at %></td>
+          <td><%= issue.tags.map(&:title).join(',') %></td>
           <td><%= button_to '編輯', edit_issue_path(issue), method: :get, class: "btn btn-primary btn-sm" %></td>
           <td><%= button_to '刪除', issue_path(issue), method: :delete, class: "btn btn-danger btn-sm" %></td>
         </tr>
