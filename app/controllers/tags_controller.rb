@@ -17,24 +17,26 @@ class TagsController < ApplicationController
     @tag = Tag.new(tag_params)
 
     if @tag.save
-      redirect_to tags_url, success: '問題成功建立！'
+      redirect_to tags_url, success: '標籤成功建立！'
     else
-      render :new, status: :unprocessable_entity
+      flash.now[:error] = @tag.errors.messages.join(',')
+      render :new
     end
   end
 
   def update
     if @tag.update(tag_params)
-      redirect_to tags_url, notice: '問題成功更新！'
+      redirect_to tags_url, notice: '標籤成功更新！'
     else
-      render :edit, status: :unprocessable_entity
+      flash.now[:error] = @tag.errors.messages.join(',')
+      render :edit
     end
   end
 
   def destroy
     @tag.destroy
 
-    redirect_to tags_url, notice: '問題已刪除！'
+    redirect_to tags_url, notice: '標籤已刪除！'
   end
 
   private

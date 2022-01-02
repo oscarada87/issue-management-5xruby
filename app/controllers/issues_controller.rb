@@ -1,5 +1,5 @@
 class IssuesController < ApplicationController
-  before_action :set_issue, only: %i[ show edit update destroy ]
+  before_action :set_issue, only: %i[ edit update destroy ]
 
   def index
     @q = Issue.where(user: current_user).ransack(params[:q])
@@ -19,7 +19,8 @@ class IssuesController < ApplicationController
     if @issue.save
       redirect_to issues_url, success: '問題成功建立！'
     else
-      render :new, status: :unprocessable_entity
+      flash.now[:error] = @issue.errors.messages.join(',')
+      render :new
     end
   end
 
@@ -27,7 +28,8 @@ class IssuesController < ApplicationController
     if @issue.update(issue_params)
       redirect_to issues_url, notice: '問題成功更新！'
     else
-      render :edit, status: :unprocessable_entity
+      flash.now[:error] = @issue.errors.messages.join(',')
+      render :edit
     end
   end
 

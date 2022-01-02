@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'User', type: :feature do
+  before(:example) do
+    Role.create(name: 'user')
+    Role.create(name: 'admin')
+  end
+
   scenario 'sign up' do
 
     visit '/'
@@ -14,7 +19,7 @@ RSpec.describe 'User', type: :feature do
   end
 
   scenario 'login / sign out' do
-    User.create(account: 'test123', password: 'test123')
+    User.create(account: 'test123', password: 'test123', role: Role.find_by(name: 'user'))
     visit 'users/sign_in'
     fill_in '帳號', with: 'test123'
     fill_in '密碼', with: 'test123'
