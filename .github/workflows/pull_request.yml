@@ -13,6 +13,6 @@ on:
 
 jobs:
   rspec:
-    uses: oscar/issue-management-5xruby/.github/workflows/rspec.yml@master
+    uses: oscarada87/issue-management-5xruby/.github/workflows/rspec.yml@master
     secrets:
       ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
