@@ -18,30 +18,18 @@
 
 - 使用者的管理功能
 
-### 瀏覽器支援
-
-- 預設需要支援 macOS/Chrome 的最新版本
-
-### 開發工具
-
-請以下列程式語言、網站開發框架及資料庫系統的最新穩定版本進行開發：
-
-- Ruby
-- Ruby on Rails
-- PostgreSQL
-
-server 端請使用：
-
-- Heroku
-
 ## Setup
-`$ yarn install`
-`$ bundle install`
-`$ rake db:create rake db:migrate`
+`$ yarn install`\
+`$ bundle install`\
+`$ rake db:setup`\
 `$ rails s`
+
+Default admin\
+account: admin, password: admin\
+Default user\
+account: test1, password: test1
 
 ## Development
 
-start the server
-
+start the server\
 `$ foreman start -f Procfile.dev`

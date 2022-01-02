@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'Issue CRUD', type: :feature do
   before(:example) do
-    User.create(account: 'test123', password: 'test123')
+    role = Role.create(name: 'user')
+    Role.create(name: 'admin')
+    User.create(account: 'test123', password: 'test123', role: role)
   end
 
   scenario 'create a new issue' do
